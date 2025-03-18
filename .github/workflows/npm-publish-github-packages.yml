@@ -12,16 +12,16 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures full commit history if needed
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm ci
 
-
-
   publish-gpr:
     needs: build
-    runs-on: self-hosted  # Change from ubuntu-latest to self-hosted
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: write
@@ -35,4 +35,3 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
