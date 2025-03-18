@@ -16,8 +16,7 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      # REMOVE or COMMENT OUT the next line
-      # - run: npm test
+
 
 
   publish-gpr:
